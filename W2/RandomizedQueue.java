@@ -1,19 +1,31 @@
+/*************************************************************************
+ * Name: Mariano Simone
+ * Email: mljsimone@gmail.com
+ *
+ * Compilation:  javac RandomizedQueue.java
+ * Execution:
+ * Dependencies: java.util.Iterator, java.util.NoSuchElementException
+ *
+ * Description: A RandomizedQueue implementation
+ *
+ *************************************************************************/
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class RandomizedQueue<Item>  implements Iterable<Item>
-{
+public class RandomizedQueue<Item>  implements Iterable<Item> {
+    
     private int n = 0;
     private int used = 0;
     private Item[] items = (Item[]) new Object[1];
     
-    private class RandomizedQueueIterator implements Iterator<Item>
-    {
+    private class RandomizedQueueIterator implements Iterator<Item> {
+        
         private int n = 0;
         private Item[] data = (Item[]) new Object[used];
         
-        public RandomizedQueueIterator()
-        {
+        public RandomizedQueueIterator() {
+            
             int j = 0;
             
             for (int i = 0; i < items.length; i++) {
@@ -33,18 +45,16 @@ public class RandomizedQueue<Item>  implements Iterable<Item>
             }
         }
         
-        public boolean hasNext()
-        {
+        public boolean hasNext() {
             return n < data.length;
         }
         
-        public void remove()
-        {
+        public void remove() {
             throw new UnsupportedOperationException();
         }
         
-        public Item next()
-        {
+        public Item next() {
+            
             if (!hasNext())
                 throw new NoSuchElementException();
                 
@@ -52,22 +62,19 @@ public class RandomizedQueue<Item>  implements Iterable<Item>
         }
     }
     
-    public RandomizedQueue()
-    {
+    public RandomizedQueue() {
     }
     
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return used == 0;
     }
     
-    public int size()
-    {
+    public int size() {
         return used;
     }
     
-    private void resize(int size)
-    {
+    private void resize(int size) {
+        
         n = 0;
         Item[] newItems = (Item[]) new Object[size];
         
@@ -82,8 +89,8 @@ public class RandomizedQueue<Item>  implements Iterable<Item>
         items = newItems;
     }
     
-    public void enqueue(Item item)
-    {
+    public void enqueue(Item item) {
+        
         if (item == null)
             throw new NullPointerException();
             
@@ -94,8 +101,8 @@ public class RandomizedQueue<Item>  implements Iterable<Item>
         items[n++] = item;
     }
     
-    public Item dequeue()
-    {
+    public Item dequeue() {
+        
         int r;
         
         if (isEmpty())
@@ -116,8 +123,8 @@ public class RandomizedQueue<Item>  implements Iterable<Item>
         return item;
     }
     
-    public Item sample()
-    {
+    public Item sample() {
+        
         int r;
         
         if (isEmpty())
@@ -130,8 +137,7 @@ public class RandomizedQueue<Item>  implements Iterable<Item>
         return items[r];
     }
     
-    public Iterator<Item> iterator()
-    {
+    public Iterator<Item> iterator() {
         return new RandomizedQueueIterator();
     }
 }

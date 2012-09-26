@@ -1,7 +1,19 @@
-public class Subset
-{
-    public static void main(String[] args)
-    {
+/*************************************************************************
+ * Name: Mariano Simone
+ * Email: mljsimone@gmail.com
+ *
+ * Compilation:  javac Subset.java
+ * Execution: echo A B C D E F G H I | java Subset 3
+ * Dependencies: StdIn, StdOut
+ *
+ * Description: Read N strings and print K of them in random order.
+ *
+ *************************************************************************/
+
+public class Subset {
+    
+    public static void main(String[] args) {
+        
         int n = 0;
         String[] strings = new String[1];
         
@@ -30,7 +42,7 @@ public class Subset
         int k = Integer.parseInt(args[0]);
         
         for (int i = 0; i < k && i < n; i++) {
-            System.out.println(strings[i]);
+            StdOut.println(strings[i]);
         }
     }
 }

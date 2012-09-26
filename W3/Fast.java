@@ -13,7 +13,9 @@
 import java.util.Arrays;
 
 public class Fast {
+    
     public static void main(String[] args) {
+        
         int n = 0;
         
         In inputFile;

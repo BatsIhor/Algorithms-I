@@ -1,9 +1,21 @@
-public class PercolationStats
-{
+/*************************************************************************
+ * Name: Mariano Simone
+ * Email: mljsimone@gmail.com
+ *
+ * Compilation:  javac PercolationStats.java
+ * Execution:
+ * Dependencies: Percolation.java
+ *
+ * Description: Class in charge of running the simulation.
+ *
+ *************************************************************************/
+
+public class PercolationStats {
+    
     private double[] thresholds;
     
-    public PercolationStats(int N, int T)
-    {
+    public PercolationStats(int N, int T) {
+
         if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException();
         }
@@ -36,18 +48,15 @@ public class PercolationStats
         }
     }
     
-    public double mean()
-    {
+    public double mean() {
         return StdStats.mean(thresholds);
     }
     
-    public double stddev()
-    {
+    public double stddev() {
         return StdStats.stddev(thresholds);
     }
     
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         int N = Integer.parseInt(args[0]);
         int T = Integer.parseInt(args[1]);
         PercolationStats stats = new PercolationStats(N, T);

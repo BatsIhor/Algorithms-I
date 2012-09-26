@@ -1,41 +1,50 @@
+/*************************************************************************
+ * Name: Mariano Simone
+ * Email: mljsimone@gmail.com
+ *
+ * Compilation:  javac Deque.java
+ * Execution:
+ * Dependencies: java.util.Iterator
+ *
+ * Description: A Deque implementation
+ *
+ *************************************************************************/
+
 import java.util.Iterator;
 
-public class Deque<Item> implements Iterable<Item>
-{
+public class Deque<Item> implements Iterable<Item> {
+
     private int size;
     private Node<Item> first;
     private Node<Item> last;
     
-    private class Node<Item>
-    {
+    private class Node<Item> {
+        
         public Node<Item> previous;
         public Node<Item> next;
         public Item item;
         
-        public Node(Node<Item> previous, Node<Item> next, Item item)
-        {
+        public Node(Node<Item> previous, Node<Item> next, Item item) {
             this.previous = previous;
             this.next = next;
             this.item = item;
         }
     }
     
-    private class DequeIterator implements Iterator<Item>
-    {
+    private class DequeIterator implements Iterator<Item> {
+        
         private Node<Item> current = first;
         
-        public boolean hasNext()
-        {
+        public boolean hasNext() {
             return current != null;
         }
         
-        public void remove()
-        {
+        public void remove() {
             throw new java.lang.UnsupportedOperationException();
         }
         
-        public Item next()
-        {
+        public Item next() {
+            
             if (!hasNext())
                 throw new java.util.NoSuchElementException();
                 
@@ -47,25 +56,23 @@ public class Deque<Item> implements Iterable<Item>
         }
     }
     
-    public Deque()
-    {        
+    public Deque() {
+        
         size  = 0;
         first = null;
         last  = null;
     }
     
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         return size == 0;
     }
     
-    public int size()
-    {
+    public int size() {
         return size;
     }
     
-    public void addFirst(Item item)
-    {
+    public void addFirst(Item item) {
+
         if (item == null)
             throw new java.lang.NullPointerException();
         
@@ -81,8 +88,8 @@ public class Deque<Item> implements Iterable<Item>
         size++;
     }
     
-    public void addLast(Item item)
-    {
+    public void addLast(Item item) {
+
         if (item == null)
             throw new java.lang.NullPointerException();
             
@@ -98,8 +105,8 @@ public class Deque<Item> implements Iterable<Item>
         size++;
     }
     
-    public Item removeFirst()
-    {
+    public Item removeFirst() {
+
         if (isEmpty())
             throw new java.util.NoSuchElementException();
         
@@ -114,8 +121,8 @@ public class Deque<Item> implements Iterable<Item>
         return item;
     }
     
-    public Item removeLast()
-    {
+    public Item removeLast() {
+        
         if (isEmpty())
             throw new java.util.NoSuchElementException();
         
@@ -130,8 +137,7 @@ public class Deque<Item> implements Iterable<Item>
         return item;
     }
     
-    public Iterator<Item> iterator()
-    {
+    public Iterator<Item> iterator() {
         return new DequeIterator();
     }
 }

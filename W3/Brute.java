@@ -13,6 +13,7 @@
 public class Brute {
     
     public static void main(String[] args) {
+        
         int n = 0;
         
         In inputFile;
@@ -21,13 +22,7 @@ public class Brute {
         Point p, q, r, s;
         double slopepq, slopepr, slopeps;
         
-        if (args.length != 1)
-            throw new AssertionError("A file name should be supplied.");
-        
         inputFile = new In(args[0]);
-        
-        if (inputFile.isEmpty())
-            throw new AssertionError("The input file is empty. Fill it.");
         
         // How many points do we have in the input file?
         n = inputFile.readInt();

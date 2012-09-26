@@ -6,7 +6,7 @@
  * Execution: java Board
  * Dependencies: StdOut
  *
- * Description: Abstract datatype representing the state of the board
+ * Description: Abstract data type representing the state of the board
  *
  *************************************************************************/
 

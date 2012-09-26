@@ -1,17 +1,29 @@
-public class Percolation
-{
-    private enum Tile
-    {
+/*************************************************************************
+ * Name: Mariano Simone
+ * Email: mljsimone@gmail.com
+ *
+ * Compilation:  javac Percolation.java
+ * Execution:
+ * Dependencies: WeightedQuickUnionUF.java
+ *
+ * Description: A data type representing the state of the simulation
+ *
+ *************************************************************************/
+
+public class Percolation {
+    
+    private enum Tile {
         BLOCKED,
         OPEN,
         FULL
     }
     
     private Tile[][] tiles;
+    
     private WeightedQuickUnionUF unionFind;
     
-    public Percolation(int n)
-    {
+    public Percolation(int n) {
+        
         tiles     = new Tile[n][n];
         unionFind = new WeightedQuickUnionUF(n * n + 2);
         
@@ -22,8 +34,8 @@ public class Percolation
         }
     }
     
-    public void open(int i, int j)
-    {
+    public void open(int i, int j) {
+        
         tiles[i - 1][j - 1] = Tile.OPEN;
         
         if (i == 1) {
@@ -47,8 +59,8 @@ public class Percolation
         unionTo(i, j, i, j - 1);
     }
     
-    private void unionTo(int i, int j, int i2, int j2)
-    {
+    private void unionTo(int i, int j, int i2, int j2) {
+        
         if (i2 < 1 || i2 > tiles.length || j2 < 1 || j2 > tiles.length) {
             return;
         }
@@ -63,8 +75,8 @@ public class Percolation
         );
     }
     
-    private boolean isBlocked(int i, int j)
-    {
+    private boolean isBlocked(int i, int j) {
+        
         if (i < 1 || i > tiles.length || j < 1 || j > tiles.length) {
             throw new java.lang.IndexOutOfBoundsException();
         }
@@ -72,8 +84,8 @@ public class Percolation
         return tiles[i - 1][j - 1] == Tile.BLOCKED;
     }
     
-    public boolean isOpen(int i, int j)
-    {
+    public boolean isOpen(int i, int j) {
+        
         if (i < 1 || i > tiles.length || j < 1 || j > tiles.length) {
             throw new java.lang.IndexOutOfBoundsException();
         }
@@ -81,8 +93,8 @@ public class Percolation
         return tiles[i - 1][j - 1] == Tile.OPEN;
     }
     
-    public boolean isFull(int i, int j)
-    {
+    public boolean isFull(int i, int j) {
+        
         if (i < 1 || i > tiles.length || j < 1 || j > tiles.length) {
             throw new java.lang.IndexOutOfBoundsException();
         }
@@ -97,8 +109,8 @@ public class Percolation
         return connected && isOpen;
     }
     
-    public boolean percolates()
-    {
+    public boolean percolates() {
+        
         return unionFind.connected(
             tiles.length * tiles.length,
             (tiles.length * tiles.length) + 1
