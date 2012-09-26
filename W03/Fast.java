@@ -6,7 +6,7 @@
  * Execution: java Fast
  * Dependencies: StdDraw.java Point.java
  *
- * Description: Find all collinear points in a given set using
+ * Description: Find all collinear points in a given set with the help of a sort
  *
  *************************************************************************/
 
@@ -20,13 +20,7 @@ public class Fast {
         Point[] points;
         Point lastPoint = null;
         
-        if (args.length != 1)
-            throw new AssertionError("A file name should be supplied.");
-        
         inputFile = new In(args[0]);
-        
-        if (inputFile.isEmpty())
-            throw new AssertionError("The input file is empty. Fill it.");
         
         // How many points do we have in the input file?
         n = inputFile.readInt();
